@@ -17,6 +17,13 @@ function setLightBrightness(lightIndex, brightness){
     json: {bri: brightness}}, function(err, req, body){})
 }
 
+function switchLight(lightIndex, lightOn){
+  request({
+    url: `http://${config.ip}/api/${config.user}/lights/${lightIndex}/state`,
+    method: 'PUT',
+    json: {on: lightOn}}, function(err, req, body){})
+}
+
 function getWantedBrightness(){
   var hour = new Date().getHours();
   return config.brightness[hour];
