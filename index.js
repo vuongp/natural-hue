@@ -30,5 +30,10 @@ function getWantedBrightness(){
 }
 
 setInterval(function(){
-  setLightBrightness(config.light, getWantedBrightness());
+  var wBri = getWantedBrightness();
+  if (wBri >= 0) {
+    setLightBrightness(config.light, getWantedBrightness());
+  } else {
+    switchLight(config.light, false)
+  }
 }, 4000);
