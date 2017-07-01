@@ -26,14 +26,12 @@ function switchLight(lightIndex, lightOn){
 
 function getWantedBrightness(){
   var hour = new Date().getHours();
-  return config.brightness[hour];
+  return config.brightness[hour+""];
 }
 
 setInterval(function(){
-  var wBri = getWantedBrightness();
-  if (wBri >= 0) {
-    setLightBrightness(config.light, getWantedBrightness());
-  } else {
-    switchLight(config.light, false)
+  var bri = getWantedBrightness();
+  if (bri) {
+    setLightBrightness(config.light, bri);
   }
 }, 4000);
